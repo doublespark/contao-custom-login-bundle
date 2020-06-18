@@ -1,0 +1,26 @@
+{
+  "name": "doublespark/contao-custom-login-bundle",
+  "type": "ds-contao-bundle",
+  "description": "Adds a DS/TF branded login screen to Contao",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jamie Devine",
+      "homepage": "https://www.doublespark.co.uk"
+    }
+  ],
+  "require": {
+    "php": ">=7.0.0",
+    "contao/core-bundle": "^4.4",
+    "guzzlehttp/guzzle": "^6.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Doublespark\\ContaoCustomLoginBundle\\": "src/",
+      "Doublespark\\ContaoCustomLoginBundle\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "contao-manager-plugin": "Doublespark\\ContaoCustomLoginBundle\\ContaoManager\\Plugin"
+  }
+}

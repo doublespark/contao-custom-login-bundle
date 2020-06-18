@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="<?= $this->language ?>">
+<head>
+
+    <meta charset="<?= $this->charset ?>">
+    <title><?= $this->title ?> - Contao Open Source CMS</title>
+    <base href="<?= $this->base ?>">
+    <meta name="generator" content="Contao Open Source CMS">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,shrink-to-fit=no">
+    <meta name="referrer" content="origin">
+    <meta name="robots" content="noindex,follow">
+
+    <!-- Custom login popup -->
+    <script>window.popupUrl = '<?= $this->popupUrl; ?>';window.popupLink = '<?= $this->popupLink; ?>';</script>
+    <link rel="stylesheet" href="/bundles/doublesparkcontaocustomlogin/css/popup.css">
+
+    <?php if($this->loginTheme): ?>
+        <link rel="stylesheet" href="/bundles/doublesparkcontaocustomlogin/css/common.css">
+        <link rel="stylesheet" href="<?= $this->loginTheme ?>">
+    <?php else: ?>
+        <link rel="stylesheet" href="<?= TL_ASSETS_URL ?>system/themes/<?= $this->theme ?>/fonts.css">
+        <link rel="stylesheet" href="<?= TL_ASSETS_URL ?>system/themes/<?= $this->theme ?>/basic.css">
+        <link rel="stylesheet" href="<?= TL_ASSETS_URL ?>system/themes/<?= $this->theme ?>/login.css">
+    <?php endif; ?>
+
+    <?= $this->stylesheets ?>
+
+    <script><?= $this->getLocaleString() ?></script>
+    <script src="<?= TL_ASSETS_URL ?>assets/mootools/js/mootools.min.js"></script>
+    <script src="<?= TL_ASSETS_URL ?>bundles/contaocore/mootao.min.js"></script>
+    <script src="<?= TL_ASSETS_URL ?>bundles/contaocore/core.min.js"></script>
+    <script><?= $this->getDateString() ?></script>
+    <?= $this->javascripts ?>
+
+</head>
+<body class="<?= $this->ua ?>">
+
+<div id="container" class="cf">
+    <div id="main">
+        <form action="<?= $this->action ?>" class="tl_login_form" method="post">
+            <div class="formbody">
+                <input type="hidden" name="FORM_SUBMIT" value="tl_login">
+                <input type="hidden" name="REQUEST_TOKEN" value="<?= REQUEST_TOKEN ?>">
+                <span class="logo"></span>
+                <h1>CMS Login</h1>
+                <?php if($this->arrStickyMessages): ?>
+                    <div class="sticky-messages-wrapper">
+                        <?php foreach($this->arrStickyMessages as $message): ?>
+                            <div class="message">
+                                <?= $message['messageText']; ?>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+                <div class="widget">
+                    <label for="username"><?= $this->username ?></label>
+                    <input type="text" name="username" id="username" class="tl_text" value="<?= $this->curUsername ?>" autocapitalize="off" placeholder="<?= $this->username ?>" required>
+                </div>
+                <div class="widget">
+                    <label for="password"><?= $this->password ?></label>
+                    <input type="password" name="password" id="password" class="tl_text" value="" placeholder="<?= $this->password ?>" required>
+                </div>
+                <div class="submit_container cf">
+                    <button type="submit" name="login" id="login" class="tl_submit"><?= $this->loginButton ?></button>
+                </div>
+            </div>
+        </form>
+        <?php if($this->arrMessages): ?>
+            <div class="messages-wrapper">
+                <?php foreach($this->arrMessages as $message): ?>
+                    <div id="message-<?= $message['id']; ?>" data-mid="<?= $message['id']; ?>" class="message">
+                        <button class="close-button">Dismiss X</button>
+                        <?= $message['messageText']; ?>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+    </div>
+    <?= $this->messages ?>
+</div>
+
+<div class="tl_info" id="javascript">
+    <?= $this->jsDisabled ?>
+</div>
+
+<script>
+    window.addEvent('domready', function() {
+        if (parent.frames[0] && parent.frames[0].name == 'switch') {
+            parent.location.reload();
+        }
+        $('username').focus();
+    });
+</script>
+
+<!-- Custom login JS -->
+<script src="/bundles/doublesparkcontaocustomlogin/js/cookies.js"></script>
+<script src="/bundles/doublesparkcontaocustomlogin/js/popup.js"></script>
+<script src="/bundles/doublesparkcontaocustomlogin/js/messages.js"></script>
+
+</body>
+</html>
