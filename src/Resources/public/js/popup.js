@@ -37,12 +37,8 @@
 
         body.appendChild(popupOverlay);
 
-        closeButton.onclick = function(e){
-            if(popupOverlay.classList.contains("visible"))
-            {
-                popupOverlay.classList.remove("visible");
-            }
-        };
+        closeButton.addEventListener('click',closePopUp);
+        popupOverlay.addEventListener('click',closePopUp);
 
         setTimeout(function(){
             var shown = dsCookies.getCookie('dsPopupHasBeenShown');
@@ -53,5 +49,13 @@
                 dsCookies.setCookie('dsPopupHasBeenShown', window.popupUrl, 30);
             }
         },800);
+
+        function closePopUp()
+        {
+            if(popupOverlay.classList.contains("visible"))
+            {
+                popupOverlay.classList.remove("visible");
+            }
+        }
     }
 })();
