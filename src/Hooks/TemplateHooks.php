@@ -86,8 +86,9 @@ class TemplateHooks
 
             if(is_array($arrMessages['popup']))
             {
-                $template->popupUrl  = $arrMessages['popup']['img'];
-                $template->popupLink = $arrMessages['popup']['link'];
+                $template->popupUrl   = $arrMessages['popup']['img'];
+                $template->popupLink  = $arrMessages['popup']['link'];
+                $template->popupWidth = $arrMessages['popup']['width'];
             }
 
             // Override template name with our custom template

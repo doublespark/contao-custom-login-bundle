@@ -17,6 +17,9 @@
     <!-- Custom login popup -->
     <script>window.popupUrl = '<?= $this->popupUrl; ?>';window.popupLink = '<?= $this->popupLink; ?>';</script>
     <link rel="stylesheet" href="/bundles/doublesparkcontaocustomlogin/css/popup.css">
+    <?php if(!empty($this->popupWidth)): ?>
+    <style>.popup-content { max-width:<?= $this->popupWidth; ?>px; }</style>
+    <?php endif; ?>
 
     <?php if($this->loginTheme): ?>
         <link rel="stylesheet" href="<?php
