@@ -20,7 +20,6 @@ $GLOBALS['TL_DCA']['tl_settings']['palettes']['default'] =  str_replace
 
 // Fields
 $GLOBALS['TL_DCA']['tl_settings']['fields']['dsCustomLoginTheme'] = array(
-    'label'     => $GLOBALS['TL_LANG']['tl_settings']['dsCustomLoginTheme'],
     'inputType' => 'radio',
     'default'   => 'default',
     'options'   => [
@@ -32,7 +31,6 @@ $GLOBALS['TL_DCA']['tl_settings']['fields']['dsCustomLoginTheme'] = array(
 );
 
 $GLOBALS['TL_DCA']['tl_settings']['fields']['dsCustomLoginEndpointUrl'] = array(
-    'label'     => $GLOBALS['TL_LANG']['tl_settings']['dsCustomLoginEndpointUrl'],
     'inputType' => 'text',
     'eval'  => array('mandatory'=>true, 'rgxp' => 'url')
 );
