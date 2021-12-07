@@ -1,5 +1,10 @@
 Change log
 ==========
+Version 1.0.3 (2022-12-07)
+--------------------------
+### Fixed
+- Fix warning coming from DCA error
+
 Version 1.0.2 (2020-06-26)
 --------------------------
 ### Updated
