@@ -1,5 +1,10 @@
 Change log
 ==========
+Version 1.0.4 (2022-05-18)
+--------------------------
+### Fixed
+- Fix undefined array key error
+
 Version 1.0.3 (2021-12-07)
 --------------------------
 ### Fixed
