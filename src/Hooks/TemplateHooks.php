@@ -84,7 +84,7 @@ class TemplateHooks
             $template->arrMessages       = $arrStandardMessages;
             $template->arrStickyMessages = $arrStickyMessages;
 
-            if(is_array($arrMessages['popup']))
+            if(isset($arrMessages['popup']) AND is_array($arrMessages['popup']))
             {
                 $template->popupUrl   = $arrMessages['popup']['img'];
                 $template->popupLink  = $arrMessages['popup']['link'];
