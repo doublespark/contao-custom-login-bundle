@@ -11,8 +11,7 @@
   ],
   "require": {
     "php": ">=7.0.0",
-    "contao/core-bundle": "^4.4",
-    "guzzlehttp/guzzle": "^6.3"
+    "contao/core-bundle": "^4.4"
   },
   "autoload": {
     "psr-4": {
