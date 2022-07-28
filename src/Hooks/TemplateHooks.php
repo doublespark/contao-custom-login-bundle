@@ -6,8 +6,6 @@ use Contao\Config;
 use Contao\Template;
 use Doublespark\ContaoCustomLoginBundle\Helper\MessageLoader;
 use Doublespark\ContaoCustomLoginBundle\Helper\TemplateLoader;
-use GuzzleHttp\Client;
-use Symfony\Component\VarDumper\VarDumper;
 
 /**
  * Class TemplateHooks
@@ -58,8 +56,7 @@ class TemplateHooks
                 $template->loginTheme = '/bundles/doublesparkcontaocustomlogin/css/'.$arrThemes[$theme];
             }
 
-            $client        = new Client();
-            $messageLoader = new MessageLoader($client);
+            $messageLoader = new MessageLoader();
             $messageLoader->setEndPointUrl(Config::get('dsCustomLoginEndpointUrl'));
             $arrMessages = $messageLoader->getMessages($theme);
 
