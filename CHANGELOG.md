@@ -1,5 +1,10 @@
 Change log
 ==========
+Version 2.0.0 (2022-11-18)
+--------------------------
+### Updated
+- Updated for Contao 5
+
 Version 1.0.5 (2022-07-28)
 --------------------------
 ### Updated

@@ -3,6 +3,7 @@
 namespace Doublespark\ContaoCustomLoginBundle\Hooks;
 
 use Contao\Config;
+use Contao\CoreBundle\ContaoCoreBundle;
 use Contao\Template;
 use Doublespark\ContaoCustomLoginBundle\Helper\MessageLoader;
 use Doublespark\ContaoCustomLoginBundle\Helper\TemplateLoader;
@@ -17,7 +18,7 @@ class TemplateHooks
     /**
      * @param Template $template
      */
-    public function onParseTemplate($template)
+    public function onParseTemplate(Template $template): void
     {
         if($template->getName() === 'be_login')
         {
@@ -32,18 +33,21 @@ class TemplateHooks
             }
 
             // Template loader
-            $templateLoader = new TemplateLoader('be_login-49');
+            $templateLoader = new TemplateLoader('be_login-50');
 
             $version = '';
             $build   = '';
 
-            if(defined('VERSION'))
+            $version = ContaoCoreBundle::getVersion();
+            $arrVersion = explode('.', $version);
+
+            if(is_array($arrVersion))
             {
-                $version = VERSION;
-                $build   = BUILD;
+                $version = sprintf('%d.%d',$arrVersion[0],$arrVersion[1]);
+                $build   = $arrVersion[2];
 
                 // Map versions to specific templates
-                $templateLoader->addTemplate('4.4','*', 'be_login-44');
+                $templateLoader->addTemplate('5.0','*', 'be_login-50');
             }
 
             $arrThemes = [

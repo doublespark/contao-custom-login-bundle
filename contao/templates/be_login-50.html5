@@ -2,13 +2,16 @@
 <html lang="<?= $this->language ?>">
 <head>
 
+    <?php $this->block('head'); ?>
     <meta charset="<?= $this->charset ?>">
-    <title><?= $this->title ?> - Contao Open Source CMS</title>
-    <base href="<?= $this->base ?>">
+    <title>Contao | <?= $this->host ?></title>
+
+    <?php $this->block('meta'); ?>
     <meta name="generator" content="Contao Open Source CMS">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,shrink-to-fit=no">
     <meta name="referrer" content="origin">
     <meta name="robots" content="noindex,follow">
+    <?php $this->endblock(); ?>
 
     <!-- Custom login popup -->
     <script>window.popupUrl = '<?= $this->popupUrl; ?>';window.popupLink = '<?= $this->popupLink; ?>';</script>
@@ -18,34 +21,53 @@
     <?php endif; ?>
 
     <?php if($this->loginTheme): ?>
-        <link rel="stylesheet" href="/bundles/doublesparkcontaocustomlogin/css/common.css">
-        <link rel="stylesheet" href="<?= $this->loginTheme ?>">
+        <link rel="stylesheet" href="<?php
+        $objCombiner = new Contao\Combiner();
+        $objCombiner->add('/bundles/doublesparkcontaocustomlogin/css/common.css');
+        $objCombiner->add($this->loginTheme);
+        echo $objCombiner->getCombinedFile();
+        ?>">
     <?php else: ?>
-        <link rel="stylesheet" href="<?= TL_ASSETS_URL ?>system/themes/<?= $this->theme ?>/fonts.css">
-        <link rel="stylesheet" href="<?= TL_ASSETS_URL ?>system/themes/<?= $this->theme ?>/basic.css">
-        <link rel="stylesheet" href="<?= TL_ASSETS_URL ?>system/themes/<?= $this->theme ?>/login.css">
+    <link rel="stylesheet" href="<?php
+    $objCombiner = new Contao\Combiner();
+    $objCombiner->add('system/themes/'.$this->theme.'/fonts.min.css');
+    $objCombiner->add('system/themes/'.$this->theme.'/basic.min.css');
+    $objCombiner->add('system/themes/'.$this->theme.'/login.min.css');
+    echo $objCombiner->getCombinedFile();
+    ?>">
     <?php endif; ?>
-
     <?= $this->stylesheets ?>
 
     <script><?= $this->getLocaleString() ?></script>
-    <script src="<?= TL_ASSETS_URL ?>assets/mootools/js/mootools.min.js"></script>
-    <script src="<?= TL_ASSETS_URL ?>bundles/contaocore/mootao.min.js"></script>
-    <script src="<?= TL_ASSETS_URL ?>bundles/contaocore/core.min.js"></script>
+    <script src="<?php
+    $objCombiner = new Contao\Combiner();
+    $objCombiner->add('assets/mootools/js/mootools.min.js');
+    $objCombiner->add('bundles/contaocore/mootao.min.js');
+    $objCombiner->add('bundles/contaocore/core.min.js');
+    echo $objCombiner->getCombinedFile();
+    ?>"></script>
     <script><?= $this->getDateString() ?></script>
     <?= $this->javascripts ?>
+    <?php $this->endblock(); ?>
 
 </head>
-<body class="<?= $this->ua ?>">
+<body class="be_login"<?= $this->attributes ?>>
 
-<div id="container" class="cf">
-    <div id="main">
-        <form action="<?= $this->action ?>" class="tl_login_form" method="post">
+<?php $this->block('container'); ?>
+<div id="container">
+    <main id="main">
+        <form class="tl_login_form" method="post">
             <div class="formbody">
                 <input type="hidden" name="FORM_SUBMIT" value="tl_login">
-                <input type="hidden" name="REQUEST_TOKEN" value="<?= REQUEST_TOKEN ?>">
+                <input type="hidden" name="REQUEST_TOKEN" value="<?= $this->requestToken ?>">
+                <input type="hidden" name="_target_path" value="<?= $this->targetPath ?>">
+                <input type="hidden" name="_always_use_target_path" value="1">
+                <?php if ($this->badgeTitle): ?>
+                    <span class="badge-title"><?= $this->badgeTitle ?></span>
+                <?php endif; ?>
                 <span class="logo"></span>
                 <h1>CMS Login</h1>
+                <?= $this->messages ?>
                 <?php if($this->arrStickyMessages): ?>
                     <div class="sticky-messages-wrapper">
                         <?php foreach($this->arrStickyMessages as $message): ?>
@@ -55,16 +77,17 @@
                         <?php endforeach; ?>
                     </div>
                 <?php endif; ?>
-                <div class="widget">
+                <div class="widget widget-text">
                     <label for="username"><?= $this->username ?></label>
-                    <input type="text" name="username" id="username" class="tl_text" value="<?= $this->curUsername ?>" autocapitalize="off" placeholder="<?= $this->username ?>" required>
+                    <input type="text" name="username" id="username" class="tl_text" value="<?= $this->curUsername ?>" autocapitalize="off" autocomplete="username" placeholder="<?= $this->username ?>" required>
                 </div>
-                <div class="widget">
+                <div class="widget widget-password">
                     <label for="password"><?= $this->password ?></label>
-                    <input type="password" name="password" id="password" class="tl_text" value="" placeholder="<?= $this->password ?>" required>
+                    <input type="password" name="password" id="password" class="tl_text" value="" autocomplete="current-password" placeholder="<?= $this->password ?>" required>
                 </div>
                 <div class="submit_container cf">
                     <button type="submit" name="login" id="login" class="tl_submit"><?= $this->loginButton ?></button>
+                    <a href="/" class="footer_preview"><?= $this->feLink ?> ›</a>
                 </div>
             </div>
         </form>
@@ -78,9 +101,10 @@
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
-    </div>
+    </main>
     <?= $this->messages ?>
 </div>
+<?php $this->endblock(); ?>
 
 <div class="tl_info" id="javascript">
     <?= $this->jsDisabled ?>

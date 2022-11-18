@@ -37,13 +37,23 @@ class TemplateLoader {
 
     /**
      * Add a template to the configuration
-     * @param string $version
+     * @param string|array $version
      * @param string $build
      * @param string $templateName
      */
     public function addTemplate($version,$build,$templateName)
     {
-        $this->arrTemplateMap[$version][$build] = $templateName;
+        if(is_array($version))
+        {
+            foreach($version as $v)
+            {
+                $this->arrTemplateMap[$v][$build] = $templateName;
+            }
+        }
+        else
+        {
+            $this->arrTemplateMap[$version][$build] = $templateName;
+        }
     }
 
     /**
