@@ -57,7 +57,7 @@ class TemplateHooks
 
             if(isset($arrThemes[$theme]))
             {
-                $template->loginTheme = '/bundles/doublesparkcontaocustomlogin/css/'.$arrThemes[$theme];
+                $template->loginTheme = 'bundles/doublesparkcontaocustomlogin/css/'.$arrThemes[$theme];
             }
 
             $messageLoader = new MessageLoader();

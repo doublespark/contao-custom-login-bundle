@@ -23,7 +23,7 @@
     <?php if($this->loginTheme): ?>
         <link rel="stylesheet" href="<?php
         $objCombiner = new Contao\Combiner();
-        $objCombiner->add('/bundles/doublesparkcontaocustomlogin/css/common.css');
+        $objCombiner->add('bundles/doublesparkcontaocustomlogin/css/common.css');
         $objCombiner->add($this->loginTheme);
         echo $objCombiner->getCombinedFile();
         ?>">
