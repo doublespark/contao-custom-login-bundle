@@ -1,5 +1,10 @@
 Change log
 ==========
+Version 2.0.1 (2023-01-31)
+--------------------------
+### Updated
+- Fix invalid asset uris
+
 Version 2.0.0 (2022-11-18)
 --------------------------
 ### Updated
