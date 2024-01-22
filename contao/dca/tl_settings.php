@@ -25,7 +25,7 @@ $GLOBALS['TL_DCA']['tl_settings']['fields']['dsCustomLoginTheme'] = array(
     'options'   => [
         'default' => 'Default',
         'ds'      => 'Doublespark',
-        'tf'      => 'TitmanFirth'
+        'tf'      => 'Firth Design'
     ],
     'eval'  => array('mandatory'=>true)
 );
