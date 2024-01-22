@@ -1,5 +1,10 @@
 Change log
 ==========
+Version 2.0.2 (2024-01-22)
+--------------------------
+### Updated
+- Change TF logo to FD
+
 Version 2.0.1 (2023-01-31)
 --------------------------
 ### Updated
