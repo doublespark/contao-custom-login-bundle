@@ -2,6 +2,7 @@
 
 namespace Doublespark\ContaoCustomLoginBundle\Helper;
 
+use Contao\Config;
 use Contao\Environment;
 
 class MessageLoader {
@@ -26,6 +27,11 @@ class MessageLoader {
      */
     public function getMessages($theme='')
     {
+        if(!Config::get('dsCustomLoginRemoteMessages'))
+        {
+            return [];
+        }
+
         $domain = Environment::get('host');
 
         $ch = curl_init();

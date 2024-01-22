@@ -6,7 +6,7 @@
 $GLOBALS['TL_DCA']['tl_settings']['palettes']['default'] =  str_replace
 (
     '{security_legend:hide}',
-    '{ds_customLogin_legend:show},dsCustomLoginTheme,dsCustomLoginEndpointUrl;{security_legend:hide}',
+    '{ds_customLogin_legend:show},dsCustomLoginTheme,dsCustomLoginRemoteMessages,dsCustomLoginEndpointUrl;{security_legend:hide}',
     $GLOBALS['TL_DCA']['tl_settings']['palettes']['default']
 );
 
@@ -14,7 +14,7 @@ $GLOBALS['TL_DCA']['tl_settings']['palettes']['default'] =  str_replace
 $GLOBALS['TL_DCA']['tl_settings']['palettes']['default'] =  str_replace
 (
     '{security_legend}',
-    '{ds_customLogin_legend:show},dsCustomLoginTheme,dsCustomLoginEndpointUrl;{security_legend}',
+    '{ds_customLogin_legend:show},dsCustomLoginTheme,dsCustomLoginRemoteMessages,dsCustomLoginEndpointUrl;{security_legend}',
     $GLOBALS['TL_DCA']['tl_settings']['palettes']['default']
 );
 
@@ -33,4 +33,9 @@ $GLOBALS['TL_DCA']['tl_settings']['fields']['dsCustomLoginTheme'] = array(
 $GLOBALS['TL_DCA']['tl_settings']['fields']['dsCustomLoginEndpointUrl'] = array(
     'inputType' => 'text',
     'eval'  => array('mandatory'=>true, 'rgxp' => 'url')
+);
+
+$GLOBALS['TL_DCA']['tl_settings']['fields']['dsCustomLoginRemoteMessages'] = array(
+    'inputType' => 'checkbox',
+    'eval'  => array('class'=>'clr')
 );
