@@ -1,5 +1,11 @@
 Change log
 ==========
+Version 2.0.3 (2024-01-22)
+--------------------------
+- Change theme name in backend to "Firth Design"
+- Allow remote messages to be disabled
+- Update login template scripts to match default template
+
 Version 2.0.2 (2024-01-22)
 --------------------------
 ### Updated
